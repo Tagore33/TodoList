@@ -13,24 +13,24 @@ namespace TodoList.Aids
     {
         public static ReadTodoTaskDto AsReadDto (this TodoTask todoTask)
         {
-            string status = todoTask.completed==true ? "finished" : "unfinished";
+            string status = todoTask.Completed ? "finished" : "unfinished";
             return new ReadTodoTaskDto
             {
-                taskId = todoTask.taskId,
-                description=todoTask.description,
-                taskDate=todoTask.taskDate,
-                taskPriority=todoTask.taskPriority,
-                taskStatus=status
+                TaskId = todoTask.TaskId,
+                Description=todoTask.Description,
+                TaskDate=todoTask.TaskDate,
+                TaskPriority=todoTask.TaskPriority,
+                TaskStatus=status
             };
         }
         public static IEnumerable<ReadTodoTaskDto> AsReadDtos(this IEnumerable<TodoTask> todoTasks)
         {
             var todoTaskDtos = todoTasks
-              .Select(todoTask => new ReadTodoTaskDto { description = todoTask.description,
-              taskStatus= todoTask.completed==true ? "finished" : "unfinished",
-              taskDate = todoTask.taskDate,
-              taskPriority= todoTask.taskPriority,
-              taskId = todoTask.taskId
+              .Select(todoTask => new ReadTodoTaskDto { Description = todoTask.Description,
+              TaskStatus= todoTask.Completed? "finished" : "unfinished",
+              TaskDate = todoTask.TaskDate,
+              TaskPriority= todoTask.TaskPriority,
+              TaskId = todoTask.TaskId
               })
               .ToList();
 

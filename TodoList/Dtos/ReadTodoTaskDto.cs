@@ -10,10 +10,10 @@ namespace TodoList.Dtos
 {
     public class ReadTodoTaskDto
     {
-        public Guid taskId { get;init; }
-        public DateTime taskDate { get; init; }
-        public string? description { get; init; }
-        public Priority taskPriority { get; init; }
-        public string taskStatus { get; init; } = null!;
+        public Guid TaskId { get;init; }
+        public DateTime TaskDate { get; init; }
+        public string? Description { get; init; }
+        public Priority TaskPriority { get; init; }
+        public string TaskStatus { get; init; } = null!;
     }
 }

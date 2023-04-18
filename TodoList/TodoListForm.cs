@@ -30,10 +30,10 @@ namespace TodoList
                 DataGridViewRow row = todoTasksGridView.SelectedRows[0];
                 CreateUpdateTodoTaskDto taskToEdit = new CreateUpdateTodoTaskDto
                 {
-                    taskDate = (DateTime)row.Cells["taskDate"].Value,
-                    taskPriority = (Priority)row.Cells["taskPriority"].Value,
-                    completed = (string)row.Cells["taskStatus"].Value != "unfinished" ? true : false,
-                    description = (string)row.Cells["description"].Value
+                    TaskDate = (DateTime)row.Cells["taskDate"].Value,
+                    TaskPriority = (Priority)row.Cells["taskPriority"].Value,
+                    Completed = (string)row.Cells["taskStatus"].Value != "unfinished" ? true : false,
+                    Description = (string)row.Cells["description"].Value
                 };
                 using (var form = new CreateUpdateTodoTaskForm())
                 {
@@ -48,11 +48,11 @@ namespace TodoList
                 }
                 _repository.UpdateTodoTask(new TodoTask
                 {
-                    taskId = (Guid)row.Cells["taskId"].Value,
-                    taskDate = (DateTime)taskToEdit.taskDate,
-                    taskPriority = taskToEdit.taskPriority,
-                    completed = taskToEdit.completed,
-                    description = taskToEdit.description
+                    TaskId = (Guid)row.Cells["taskId"].Value,
+                    TaskDate = (DateTime)taskToEdit.TaskDate,
+                    TaskPriority = taskToEdit.TaskPriority,
+                    Completed = taskToEdit.Completed,
+                    Description = taskToEdit.Description
                 });
 
                 UpdateGridView();
@@ -78,11 +78,11 @@ namespace TodoList
 
             _repository.CreateTodoTask(new TodoTask()
             {
-                completed = newTask.completed,
-                description = newTask.description,
-                taskPriority = newTask.taskPriority,
-                taskDate = (DateTime)newTask.taskDate,
-                taskId = Guid.NewGuid()
+                Completed = newTask.Completed,
+                Description = newTask.Description,
+                TaskPriority = newTask.TaskPriority,
+                TaskDate = (DateTime)newTask.TaskDate,
+                TaskId = Guid.NewGuid()
             });
             UpdateGridView();
         }
@@ -129,11 +129,11 @@ namespace TodoList
             {
                 var priorityValue = Convert.ToString(row.Cells["taskPriority"].Value);
 
-                if (priorityValue == Convert.ToString(Priority.low))
+                if (priorityValue == Convert.ToString(Priority.Low))
                 {
                     row.DefaultCellStyle.BackColor = Color.Green;
                 }
-                else if (priorityValue == Convert.ToString(Priority.medium))
+                else if (priorityValue == Convert.ToString(Priority.Medium))
                 {
                     row.DefaultCellStyle.BackColor = Color.Yellow;
                 }

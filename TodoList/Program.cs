@@ -8,6 +8,9 @@ namespace TodoList
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
+        /// 
+        public static IServiceProvider ServiceProvider { get; private set; }
+
         [STAThread]
         static void Main()
         {
@@ -22,7 +25,6 @@ namespace TodoList
             Application.Run(ServiceProvider.GetRequiredService<TodoListForm>());
 
             }
-            public static IServiceProvider ServiceProvider { get; private set; }
 
             static IHostBuilder CreateHostBuilderTodoList()
             {

@@ -11,10 +11,10 @@ namespace TodoList.Entities
 {
     public class TodoTask
     {
-        public Guid taskId { get;init;}
-        public bool completed { get;init; }=false;
-        public DateTime taskDate { get;init;}
-        public string? description { get;init;}
-        public Priority taskPriority { get; init; }
+        public Guid TaskId { get;init;}
+        public bool Completed { get;init; }=false;
+        public DateTime TaskDate { get;init;}
+        public string? Description { get;init;}
+        public Priority TaskPriority { get; init; }
     }
 }

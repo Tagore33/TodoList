@@ -20,10 +20,9 @@ namespace TodoList
         public CreateUpdateTodoTaskForm()
         {
             var priorities = new BindingList<KeyValuePair<int, string>>();
-
+            int count = 0;
             foreach (var i in Enum.GetNames(typeof(Priority)))
             {
-                int count = 1;
                 priorities.Add(new(count, i));
                 count++;
             }
@@ -39,20 +38,20 @@ namespace TodoList
             {
                 _dataContext = new CreateUpdateTodoTaskDto()
                 {
-                    description = todoTaskDescriptionTextBox.Text,
-                    taskDate = todoTaskDateTimePicker.Value,
-                    taskPriority = (Priority)todoTaskPriorityComboBox.SelectedIndex,
-                    completed = taskStatusCheckBox.Checked == false ? false : true,
+                    Description = todoTaskDescriptionTextBox.Text,
+                    TaskDate = todoTaskDateTimePicker.Value,
+                    TaskPriority = (Priority)todoTaskPriorityComboBox.SelectedIndex,
+                    Completed = taskStatusCheckBox.Checked
                 };
                 return _dataContext;
             }
             set
             {
                 _dataContext = value;
-                todoTaskPriorityComboBox.SelectedIndex = todoTaskPriorityComboBox.FindString(Convert.ToString(_dataContext.taskPriority));
-                todoTaskDescriptionTextBox.Text = _dataContext.description;
-                todoTaskDateTimePicker.Value = _dataContext.taskDate != null ? _dataContext.taskDate.Value : DateTime.Now.Date;
-                taskStatusCheckBox.Checked = _dataContext.completed;
+                todoTaskPriorityComboBox.SelectedIndex = todoTaskPriorityComboBox.FindString(Convert.ToString(_dataContext.TaskPriority));
+                todoTaskDescriptionTextBox.Text = _dataContext.Description;
+                todoTaskDateTimePicker.Value = _dataContext.TaskDate != null ? _dataContext.TaskDate.Value : DateTime.Now.Date;
+                taskStatusCheckBox.Checked = _dataContext.Completed;
             }
         }
     }
